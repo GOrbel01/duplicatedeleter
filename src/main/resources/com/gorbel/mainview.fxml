@@ -35,15 +35,15 @@
                         <ListView fx:id="filesListView" prefHeight="158.0" prefWidth="579.0" />
                     </content>
                 </ScrollPane>
-                <TextField fx:id="fileTextField" layoutX="205.0" layoutY="96.0" />
+                <TextField fx:id="fileTextField" editable="false" layoutX="205.0" layoutY="96.0" />
                 <Label layoutX="101.0" layoutY="101.0" text="Choose Folder" />
-                <Button fx:id="searchDirButton" layoutX="392.0" layoutY="97.0" mnemonicParsing="false" onMouseClicked="#onClickDirectoryButton" prefHeight="29.0" prefWidth="22.0" text="...">
+                <Button fx:id="searchDirButton" layoutX="354.0" layoutY="96.0" mnemonicParsing="false" onMouseClicked="#onClickDirectoryButton" prefHeight="25.0" prefWidth="24.0" text="...">
                     <font>
                         <Font size="12.0" />
                     </font>
                 </Button>
                 <Button fx:id="fileSearchButton" layoutX="233.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#doSearch" prefHeight="45.0" prefWidth="78.0" text="Search" />
-                <Label layoutX="104.0" layoutY="161.0" text="File Search" />
+                <Label layoutX="140.0" layoutY="160.0" text="Search" />
                 <TextField fx:id="fileExtField" layoutX="205.0" layoutY="156.0" />
                 <RadioButton fx:id="fileSearchRadioButtonName" layoutX="500.0" layoutY="161.0" mnemonicParsing="false" text="By Name" />
                 <RadioButton fx:id="fileSearchRadioButtonExt" layoutX="392.0" layoutY="160.0" mnemonicParsing="false" text="By Extension" />

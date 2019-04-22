@@ -11,6 +11,7 @@ import java.util.Map;
 
 public class StageManager {
     private Stage stage;
+    private String currentScene;
     private Map<String, MScene> scenes;
 
     private static StageManager instance;
@@ -41,10 +42,17 @@ public class StageManager {
             if (containsScene(sceneName)) {
                 switchScene(sceneName);
             } else {
-                Parent parent = getParent(sceneName, path);
+                FXMLLoader loader = getLoader(sceneName, path);
+                Parent parent = null;
+                try {
+                    parent = loader.load();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 if (parent != null) {
-                    MScene scene = new MScene(parent, sceneName);
+                    MScene scene = new MScene(parent, sceneName, loader.getController());
                     stage.setScene(scene);
+                    currentScene = sceneName;
                     stage.show();
                     if (!containsScene(sceneName)) {
                         scenes.put(sceneName, scene);
@@ -54,19 +62,19 @@ public class StageManager {
         }
     }
 
-    public void switchScene(String sceneId) {
+    public MScene getCurrentScene() {
+        return scenes.get(currentScene);
+    }
+
+    private void switchScene(String sceneId) {
+        currentScene = sceneId;
         stage.setScene(scenes.get(sceneId));
         stage.show();
     }
 
-    private Parent getParent(String fileName, String path) {
-        try {
-            String resStr = path + fileName + ".fxml";
-            return FXMLLoader.load(getClass().getResource(resStr));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return null;
+    private FXMLLoader getLoader(String fileName, String path) {
+        String resStr = path + fileName + ".fxml";
+        return new FXMLLoader(getClass().getResource(resStr));
     }
 
     private boolean containsScene(String sceneId) {

@@ -6,13 +6,12 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 
-public class HelloFX extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage stage) {
         StageManager stageManager = StageManager.getInstance();
         stageManager.setStage(stage);
         stageManager.getStage().setTitle("Duplicate Deletion Tool");
-
         stageManager.setScene(Scenes.MAIN.getFileName(), Scenes.path);
     }
 

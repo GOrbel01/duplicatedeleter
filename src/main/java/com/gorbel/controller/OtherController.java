@@ -5,6 +5,6 @@ import com.gorbel.scene.singleton.StageManager;
 
 public class OtherController {
     public void doTestAction() {
-        StageManager.getInstance().switchScene(Scenes.MAIN.getFileName());
+        StageManager.getInstance().setScene(Scenes.MAIN.getFileName(), Scenes.path);
     }
 }

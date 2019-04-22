@@ -8,15 +8,21 @@ import java.util.Objects;
 public class MScene extends Scene {
     public static int instanceCount = 0;
     private String sceneName;
+    private Object controller;
 
-    public MScene(Parent parent, String sceneName) {
+    public MScene(Parent parent, String sceneName, Object controller) {
         super(parent);
         this.sceneName = sceneName;
+        this.controller = controller;
         instanceCount++;
     }
 
     public String getSceneName() {
         return sceneName;
+    }
+
+    public Object getController() {
+        return controller;
     }
 
     @Override

@@ -4,19 +4,41 @@ import com.gorbel.scene.MScene;
 import com.gorbel.scene.scenes.Scenes;
 import com.gorbel.scene.singleton.StageManager;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.DirectoryChooser;
 
 import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
 
     @FXML
     private TextField fileTextField;
 
+    @FXML
+    private RadioButton fileSearchRadioButtonExt;
+
+    @FXML
+    private RadioButton fileSearchRadioButtonName;
+
     private File dir;
 
     private StageManager stageManager = StageManager.getInstance();
+
+    private ToggleGroup toggleGroup = new ToggleGroup();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.fileSearchRadioButtonExt.setToggleGroup(toggleGroup);
+        if (!toggleGroup.hasProperties()) {
+            fileSearchRadioButtonExt.setSelected(true);
+        }
+        this.fileSearchRadioButtonName.setToggleGroup(toggleGroup);
+    }
 
     public void onClickDirectoryButton() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -38,7 +60,6 @@ public class Controller {
         } else {
             for (File f : files ) {
                 if (f != null) {
-                    System.out.println("P: " + f.getAbsolutePath());
                     File[] newFiles = f.listFiles();
                     if (newFiles != null) searchFiles(newFiles);
                 }
@@ -53,6 +74,8 @@ public class Controller {
     }
 
     public void doDeleteFiles() {
-
+        StageManager sm = StageManager.getInstance();
+        Controller c = (Controller) sm.getCurrentScene().getController();
+        System.out.println(c.dir.getAbsolutePath());
     }
 }
