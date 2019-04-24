@@ -15,49 +15,37 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" prefHeight="555.0" prefWidth="700" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gorbel.controller.Controller">
-    <columnConstraints>
-        <ColumnConstraints />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-    </rowConstraints>
+<GridPane fx:id="mainGridPane" alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gorbel.controller.Controller">
     <children>
-        <AnchorPane fx:id="searchRadio" prefHeight="491.0" prefWidth="610.0">
+        <AnchorPane fx:id="mainAnchorPane">
             <children>
-                <HBox prefHeight="100.0" prefWidth="200.0" />
-                <ScrollPane layoutX="4.0" layoutY="288.0" prefHeight="162.0" prefWidth="601.0">
+                <ScrollPane fx:id="itemsScrollPane" layoutX="4.0" layoutY="288.0" AnchorPane.topAnchor="288.0">
                     <content>
                         <ListView fx:id="filesListView" prefHeight="158.0" prefWidth="579.0" />
                     </content>
                 </ScrollPane>
-                <TextField fx:id="fileTextField" editable="false" layoutX="205.0" layoutY="96.0" />
-                <Label layoutX="101.0" layoutY="101.0" text="Choose Folder" />
-                <Button fx:id="searchDirButton" layoutX="354.0" layoutY="96.0" mnemonicParsing="false" onMouseClicked="#onClickDirectoryButton" prefHeight="25.0" prefWidth="24.0" text="...">
+                <TextField fx:id="fileTextField" editable="false" layoutX="205.0" layoutY="96.0" AnchorPane.topAnchor="96.0" />
+                <Label layoutX="101.0" layoutY="101.0" text="Choose Folder" AnchorPane.topAnchor="101.0" />
+                <Button fx:id="searchDirButton" layoutX="354.0" layoutY="96.0" mnemonicParsing="false" onMouseClicked="#onClickDirectoryButton" text="..." AnchorPane.topAnchor="96.0">
                     <font>
                         <Font size="12.0" />
                     </font>
                 </Button>
-                <Button fx:id="fileSearchButton" layoutX="233.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#doSearch" prefHeight="45.0" prefWidth="78.0" text="Search" />
-                <Label layoutX="140.0" layoutY="160.0" text="Search" />
-                <TextField fx:id="fileExtField" layoutX="205.0" layoutY="156.0" />
-                <RadioButton fx:id="fileSearchRadioButtonName" layoutX="500.0" layoutY="161.0" mnemonicParsing="false" text="By Name" />
-                <RadioButton fx:id="fileSearchRadioButtonExt" layoutX="392.0" layoutY="160.0" mnemonicParsing="false" text="By Extension" />
+                <Button fx:id="fileSearchButton" layoutX="233.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#doSearch" text="Search" AnchorPane.topAnchor="223.0" />
+                <Label fx:id="searchLabel" layoutX="101.0" layoutY="161.0" />
+                <TextField fx:id="fileExtField" layoutX="205.0" layoutY="156.0" AnchorPane.topAnchor="156.0" />
+                <RadioButton fx:id="fileSearchRadioButtonName" layoutX="500.0" layoutY="161.0" mnemonicParsing="false" text="By Name" AnchorPane.topAnchor="160.0" />
+                <RadioButton fx:id="fileSearchRadioButtonExt" layoutX="392.0" layoutY="160.0" mnemonicParsing="false" text="By Extension" AnchorPane.topAnchor="160.0" />
             </children>
         </AnchorPane>
         <HBox alignment="BOTTOM_CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="61.0" prefWidth="556.0" GridPane.rowIndex="1">
             <children>
-                <VBox alignment="BOTTOM_CENTER" prefHeight="67.0" prefWidth="228.0">
+                <VBox alignment="CENTER" prefHeight="67.0" prefWidth="228.0">
                     <children>
-                        <Label fx:id="countTextLabel" />
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER" fillHeight="false">
                             <children>
-                                <Button fx:id="deleteSelected" mnemonicParsing="false" onMouseClicked="#doDeleteSelected" prefHeight="25.0" prefWidth="109.0" text="Delete Selected" />
-                                <Button fx:id="deleteFiles" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#doDeleteFiles" prefHeight="25.0" prefWidth="94.0" text="Delete All Files" HBox.hgrow="ALWAYS">
+                                <Button fx:id="deleteSelected" mnemonicParsing="false" onMouseClicked="#doDeleteSelected" text="Delete Selected" />
+                                <Button fx:id="deleteFiles" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#doDeleteFiles" text="Delete All Files" HBox.hgrow="ALWAYS">
                                     <HBox.margin>
                                         <Insets left="20.0" />
                                     </HBox.margin></Button>
@@ -68,4 +56,11 @@
             </children>
         </HBox>
     </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>
